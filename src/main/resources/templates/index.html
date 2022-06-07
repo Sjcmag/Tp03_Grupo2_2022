@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head >
+<meta charset="UTF-8">
+<title>Colque Santiago</title>
+<link th:href="@{/css/miEstilo.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-Link" href="/otroUsuario">Cargar Usuario</a>
+        <a class="nav-link" href="/listadoUsuario">Lista Usuario</a>
+      </div>
+    </div>
+  </div>
+</nav>
+ <div class="container">
+         <div th:insert="/layouts/header :: header"></div>
+         <div class="cuerpo">
+         <nav class="col-6 col-xl-2">menu</nav>
+         <article class="col-6 col-sm-10">cuerpo de pagina</article>
+         </div> 
+         
+         <footer>pie de pagina</footer>
+ </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>listado</title>
+<link th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/miEstilo.css}" rel="stylesheet" type="text/css">
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.1.0/css/all.css}" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+        <a class="nav-Link" href="/otroUsuario">Cargar Usuario</a>
+        <a class="nav-link" href="/listadoUsuario">Lista Usuario</a>
+      </div>
+    </div>
+  </div>
+</nav>
+ <div class="container">
+<div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
+		<section>
+			<div class="table-responsive">
+				<table class="table table-sm table-dark table-hover">
+					<caption class="table-caption">List of users</caption>
+					<thead>
+						<tr class="text-center">
+							<th scope="col">nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Email</th>
+							<th scope="col">dni</th>
+							<th scope="col">Edicion</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+					
+						<tr th:each="u :${ListaUsuario}" class="text-center">
+							<td th:text="${u.nombre}"></td>
+							<td th:text="${u.apellido}"></td>
+							<td th:text="${u.Email}"></td>
+							<td th:text="${u.dni}"></td>
+							<td><a class="btn btn-warning" href="#"
+								th:href="@{'/editarUsuario/'+${u.dni}}">Editar</a> 
+								<a class="link-eliminar" href="#" th:onclick="'javascript:confirmarEliminar(\''+${u.dni}+'\');'">
+								<i class="btn btn-secondary fa fa-trash-alt"></i></a>
+							
+	
+
+	<!-- MODAL ELIMINAR Usuario funciona con JS-->
+	<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="eliminarModal" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="eliminarModalTitulo">Confirmar Eliminar</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal"
+		                						aria-label="Close"></button>
+										</div>
+										<div class="modal-body"><h6>¿Seguro quiere eliminar este Usuario?</h6></div>
+										<form>										
+										<input class="form-control" type="text" id="identificadorDeUsuario" name="userIdHiddenInput"/>
+										
+										</form>
+										<div class="modal-footer">									
+											<button type="button" class="btn btn-primary" th:onclick="eliminarUsuario()">Si, Borrar</button>
+											<button type="button" class="btn btn-secondary"	data-bs-dismiss="modal">Cancelar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+	
+<!-- script que envia datos -->
+	<script type="text/javascript">
+		var exampleModal = document.getElementById('modalEliminar')
+		exampleModal.addEventListener('show.bs.modal', function(event) {
+			// Button that triggered the modal
+			var button = event.relatedTarget
+			// Extract info from data-bs-* attributes
+			var recipient = button.getAttribute('data-bs-mail')
+			var recipient2 = button.getAttribute('data-bs-whatever')
+			// If necessary, you could initiate an AJAX request here
+			// and then do the updating in a callback.
+			//
+			// Update the modal's content.
+			var modalTitle = exampleModal.querySelector('.modal-title')
+			var modalBodyInput = exampleModal
+					.querySelector('.modal-body input')
+
+			modalTitle.textContent = 'Eliminar Usuario ' + recipient
+			modalBodyInput.value = recipient2
+		})
+	</script>
+
+	
+	<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"
+		type="text/javascript" src="webjars/jquery/3.6.0/jquery.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
+		type="text/javascript"
+		src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		function confirmarEliminar(id) {
+			$("#identificadorDeUsuario").val(id);
+			$('#modalEliminar').modal('show');
+		}
+
+		function eliminarUsuario() {
+			var id = $("#identificadorDeUsuario").val();
+			window.location = "/eliminarUsuario/" + id;
+		}
+	</script>
+</body>
+</html>

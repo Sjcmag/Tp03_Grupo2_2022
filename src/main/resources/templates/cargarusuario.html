@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+<title>cargarusuario</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-Link" href="/otroUsuario">Cargar Usuario</a>
+        <a class="nav-link" href="/listadoUsuario">Lista Usuario</a>
+      </div>
+    </div>
+  </div>
+</nav>
+////////////////////////////
+<div class="container">
+
+<div th:insert="/layouts/header :: header"></div>
+<form th:object="${usuario}" th:action="${editMode}?  @{/editarUsuario} : @{/guardarusuario}" method="post">  
+  <input type="hidden" class="form-control" th:if="${editMode}" th:field="*{contrasena}">
+  <input type="hidden" class="form-control" th:if="${editMode}" th:field="*{estado}">
+  <input type="hidden" class="form-control" th:if="${editMode}" th:field="*{dni}">
+  <div class="mb-3">
+       <label for="nombre" class="form-label">Nombre</label>
+       <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingrese nombre completo" required>
+       <label for="apellido" class="form-label">Apellido</label>
+       <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Ingrese apellido" required>
+       <label for="exampleInputEmail1" class="form-label">email</label><input type="email" class="form-control" id="exampleInputEmail1" th:field="*{email}" placeholder="Ingrese email:ej@correo.com" required>   
+  </div>
+  <div class="mb-3">
+  <label for="exampleInputPassword1" class="form-label" th:if="${editMode==false}">contraseña</label>
+  <input type="password" class="form-control" 
+  id="exampleInputPassword1" 
+  th:field="*{contrasena}" th:if="${editMode==false}" 
+   placeholder="Ingrese contraseña" required>
+  <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></div>   
+  </div>
+  <div class="mb-3">
+   <label for="dni" class="form-label" th:if="${editMode==false}">Dni</label>
+   <input type="number" class="form-control" id="dni" th:field="*{dni}" th:if="${editMode==false}" placeholder="Ingrese dni" required>
+   <div class="alert alert-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>   
+           
+  </div>
+ <div class="mb-3">
+     <label for="fechanacimiento" class="form-label">Fecha de Nacimiento</label>
+     <input type="date" class="form-control" id="fechanacimiento" th:field="*{fechaNacimiento}" placeholder="Ingrese Fecah de Nacimiento" >
+  
+ </div>  
+  <button type="submit" class="btn btn-primary" ><span th:text="${editMode}?'Modificar':'Guardar'"></span>  </button>
+  <a class="btn btn-light" th:href="@{/}">Volver</a>
+</form>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"
+		type="text/javascript"
+		src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
