@@ -10,27 +10,166 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/index">Grupo02</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-Link" href="/otroUsuario">Cargar Usuario</a>
-        <a class="nav-link" href="/listadoUsuario">Lista Usuario</a>
+        <a class="nav-link active" aria-current="page" href="/index">Home</a>
+        <a class="nav-Link active" href="/otroUsuario">Cargar Usuario</a>
+        <a class="nav-link active" href="/listadoUsuario">Lista Usuario</a>
+        <a class="nav-link active" href="otroCursos">Cargar Cursos</a>
+        <a class="nav-link active" href="listadoCursos">Listados Cursos</a>
       </div>
     </div>
   </div>
 </nav>
+
+      <nav>
  <div class="container">
          <div th:insert="/layouts/header :: header"></div>
          <div class="cuerpo">
          <nav class="col-6 col-xl-2">menu</nav>
-         <article class="col-6 col-sm-10">cuerpo de pagina</article>
+         <article class="TI">cuerpo de pagina</article>
          </div> 
          
-         <footer>pie de pagina</footer>
+        
  </div>
+ </nav>
+ 
+ <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./img/img2.jpg" class="d-block w-100" alt="Slider 01">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Programacion</h5>
+              <p>La programación va más allá que cualquier idioma, pues también es un gran tutor cuando se trata de aprender a solucionar problemas, principalmente situaciones de lógica e ingenio.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./img/img1,jpg" class="d-block w-100" alt="Slider 02">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Green Press</h5>
+              <p>Limpia tu cuerpo, baja de peso, reduce el estres, gana energía,  entre otros beneficios.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="imagenes/Sin título1.jpg" class="d-block w-100" alt="Slider 03">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Supradyn Vitaminas </h5>
+              <p>Supradyn combinación de vitaminas y minerales, elegilo en la presentación que más te guste.</p>
+            </div>  
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div></div>
+
+      <div></div>
+      
+ 
+ 
+ 
+ <main>
+ 
+<Section>
+          <div class="container">
+              <div class="row ">
+              <div class="col-12 col-sm-4 text-center">
+                <img class="img-fluid"src="./img/imagen1.png" alt="Banner 01">
+                <h5>¿Porque debo aprender a Programar? </h5>
+                <p>Los conocimientos básicos de programación pueden ayudarte a construir un camino hacia una multitud de carreras: desarrollo web, desarrollo de juegos, aprendizaje automático, ciencia de datos y mucho más.</p>
+
+              </div>
+              <div class="col-12 col-sm-4 text-center">
+                <img class="img-fluid"src="./img/imagen2.png" alt="Banner 02">
+                <h5>Beneficios de programar </h5>
+                <p>
+Amplio abanico de oportunidades laborales. Una gran capacidad de análisis y de organización. Mayor capacidad para la solución de problemas de forma metódica. Posibilidades de tener tu propia empresa.</p>
+
+              </div>
+              <div class="col-12 col-sm-4 text-center">
+                <img class="img-fluid" src="./img/imagen3.png" alt="Banner 03">
+                <h5>¿porque deberia programar?</h5>
+                <p> La programación va más allá que cualquier idioma, pues también es un gran tutor cuando se trata de aprender a solucionar problemas, principalmente situaciones de lógica e ingenio. Es el arte de crear soluciones desde cero a paradigmas complejos a base de un pensamiento.</p>
+              </div>
+             
+          </div>
+</div>
+
+      </Section>
+      </main> 
+
+
+
+
+  <Section>
+    <div class="container text-center mt-5 py-5">
+      <h3>Lista de Cursos</h3>
+      <hr>
+      <p>Aqui puedes ver todos nuestros cursos disponibles</p>
+    </div>
+          <div class="row mx-auto container-fluid">
+          <div class="product col-12 col-sm-4 text-center">
+           <a href="...">
+            <img class="img-fluid"src="./img/phyton2.png" alt="Banner 01">
+          </a>
+            <h5>Curso python </h5>
+            <p>$2.000</p>
+
+          </div>
+          <div class="product col-12 col-sm-4 text-center">
+            <a href="green press.html">
+            <img class="img-fluid"src="./img/cpp2.png" alt="Banner 02">
+          </a>
+            <h5>curso Cpp </h5>
+            <p>$3.000</p>
+
+          </div>
+          <div class="product col-12 col-sm-4 text-center">
+            <a href="supradyn.html">
+            <img class="img-fluid" src="./img/html52.jpg" alt="Banner 03">
+          </a>
+            <h5>curso HTML5</h5>
+            <p>$2.500</p>
+          </div>
+         
+      </div>
+  </section>
+  <section>
+    <div class="container text-center mt-5 py-5">
+      <h3>Proximamente nuevos Cursos</h3>
+      <hr>
+      <p>solo es cuestion de tiempo</p>
+    </div>
+  </section>
+  
+      </main>
+      
+           <Footer>
+        <img class="logotipo-footer"src="./img/abajo.png" alt="logotipo">
+  
+        <p>No dudes en contactarte con nosotros</p>
+        
+        <p>Gmail: edmcursos@gmail.com</p>
+        <p>Tel:3884964918</p>
+      
+        
+
+      </Footer>
+ 
 </body>
 </html>
