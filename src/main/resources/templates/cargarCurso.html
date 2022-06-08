@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Subir Curso</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" href="/static/css/style.css">
@@ -12,6 +13,19 @@
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
+
+<meta charset="UTF-8">
+<title>Formulario</title>
+<link th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}"
+	rel="stylesheet" type="text/css">
+<link th:href="@{/css/miEstilo.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Grupo02</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,12 +34,18 @@
         <a class="nav-link active" aria-current="page" href="/index">Home</a>
         <a class="nav-Link active" href="/otroUsuario">Cargar Usuario</a>
         <a class="nav-link active" href="/listadoUsuario">Lista Usuario</a>
+
       <a class="nav-Link" href="/otroCurso">Cargar Curso</a>
         <a class="nav-link" href="/mostrarCursos">Lista Curso</a>
+
+        <a class="nav-link active" href="otroCursos">Cargar Cursos</a>
+        <a class="nav-link active" href="listadoCursos">Listados Cursos</a>
+
       </div>
     </div>
   </div>
 </nav>
+
 
     
     <div class="container">
@@ -95,5 +115,63 @@
 		type="text/javascript"
 		src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
 
+
+	<div class="container">
+		<div th:insert="/layouts/header :: header"></div>
+		<form th:object="${curso}" th:action="${editMode}? @{/modificarCurso} : @{/guardarCursos}" method="post">
+			
+     	 	<input type="idden" class="form-control" th:if="${bandCurso}" th:field="*{estadoCurso}">
+     	 	<input type="idden" class="form-control" th:if="${bandCurso}" th:field="*{idCurso}">
+			
+			<div class="mb-3">
+          <label for="id" class="form-label">ID del curso</label>
+          <input type="number" class="form-control"
+            id="id" th:field="*{idCurso}" th:if="${editMode==false}" placeholder="Ingrese ID para el curso">
+          <div class="alert alert-danger" th:if="${#fields.hasErrors('idCurso')}" th:errors="*{idCurso}"></div>
+        </div>
+        
+			<div class="mb-3">
+				<label for="nombreCurso" class="form-label">Nombre del curso</label> <input
+					type="text" class="form-control" id="nombreCurso" th:field="*{nombreCurso}"
+					placeholder="Ingrese curso"> <label for="docente"
+					class="form-label">Encargado del curso</label> <input type="text"
+					class="form-control" id="docente" th:field="*{docente}"
+					placeholder="Ingrese docente">
+			</div>
+			
+			<div class="mb-3">
+				<label for="descripcion" class="form-label">detalles sobre el Curso</label> 
+				<input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Realice una descricion detallada del curso">
+			</div>
+			
+			<div class="mb-3">
+				<label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+				<input type="date" class="form-control" id="fechaInicio" th:field="*{fechaInicio}" placeholder="Ingrese Fecha de Inicio">
+			</div>
+			
+			<div class="mb-3">
+				<label for="fechaFinal" class="form-label">Fecha de Finalización</label>
+				<input type="date" class="form-control" id="fechaFinal"
+					th:field="*{fechaFinal}" placeholder="Ingrese Fecha de Finalización">
+			</div>
+			
+			<div class="mb-3">
+          <label for="cupo" class="form-label">Cupos</label>
+          <input type="number" class="form-control"
+            id="costo" th:field="*{cupo}" placeholder="Ingrese el cupo del curso">
+ 
+        </div>
+			
+			<div class="mb-3">
+          <label for="costo" class="form-label">Precio del curso</label>
+          <input type="number" class="form-control"
+            id="costo" th:field="*{costo}" placeholder="Ingrese el precio del curso">
+ 
+        </div>
+
+			<button type="submit" class="btn btn-primary"
+				th:value="${bandCurso}? 'modificar' : 'registrar' ">Registrar Curso</button>
+		</form>
+	</div>
 </body>
 </html>
